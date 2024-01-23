@@ -1,12 +1,16 @@
-const express = require('express');
+import express from "express";
+import ValidatorFactory from "./validators/ValidatorFactory.js";
 
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('A simple Node App is '
-        + 'running on this server')
+
+app.get('/validate', (req, res) => {
+    let id = req.query.id;
+    let validator = ValidatorFactory.createValidator(id);
+    res.send(validator.validateAndExtractInfo());
+    
     res.end()
-})
+});
 
 const PORT = process.env.PORT || 5000;
 
