@@ -7,8 +7,10 @@ const app = express();
 app.get('/validate', (req, res) => {
     let id = req.query.id;
     let validator = ValidatorFactory.createValidator(id);
-    res.send(validator.validateAndExtractInfo());
-    
+
+    if (validator === null) res.send("Invalid National ID");
+    else res.send(validator.validateAndExtractInfo());
+
     res.end()
 });
 
