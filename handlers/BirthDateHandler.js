@@ -15,7 +15,6 @@ export class BirthDateHandler extends Handler {
         }
 
         let month_days= new Date(2021, birth_month , 0).getDate();
-        console.log(month_days);
         if (birth_day > month_days || birth_day === 0) {
             request.info.isValid = false;
             request.info.message = "Invalid National ID -> Birth Day is invalid";
