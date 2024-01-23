@@ -8,10 +8,11 @@ export class SyntexHandler extends Handler {
         if (!isOnlyDigits) {
             request.isValid = false;
             request.message = "Invalid National ID -> Must be a number";
+            return; 
         }
 
-        if (this.next)
-            this.next.handle(request);
+        if (this.nextHandler)
+            this.nextHandler.handle(request);
     }
 
 }
