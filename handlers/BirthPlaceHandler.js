@@ -37,7 +37,6 @@ export class BirthPlaceHandler extends Handler {
         let goverment_code = request.nationalID.substring(7, 9);
 
         let birth_place = this.goverment_codes[goverment_code];
-        console.log(birth_place);
 
         if(birth_place == null){
             request.info.isValid = false;
