@@ -21,10 +21,12 @@ export class BirthDateHandler extends Handler {
             return;
         }
 
-
-        let birth_date = new Date((birth_year, birth_month, birth_day));
+        birth_month= birth_month < 10 ? "0" + birth_month : birth_month;
+        birth_day = birth_day < 10 ? "0" + birth_day : birth_day;
+        
+        let birth_date = new Date(`${birth_year}-${birth_month}-${birth_day}`);
         let today_date = new Date();
-        if (birth_date > today_date) {
+        if (birth_date.getTime() > today_date.getTime()) {
             request.isValid = false;
             request.message = "Invalid National ID -> Birth Date is in the future";
             return;
