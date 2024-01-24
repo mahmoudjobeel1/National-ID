@@ -8,6 +8,7 @@ A simple Node.js application that provides an API endpoint for validating and ex
 1- Clone the repository:
 ```bash
     git clone https://github.com/mahmoudjobeel1/National-ID
+    cd national-id
 ```
 
 2- Install dependencies:
