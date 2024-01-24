@@ -6,10 +6,16 @@ const app = express();
 
 app.get('/validate', (req, res) => {
     let id = req.query.id;
-    let validator = ValidatorFactory.createValidator(id);
+    let country_code = req.query.country_code;
+    let validator = ValidatorFactory.createValidator(id, country_code);
 
-    if (validator === null) res.send("Invalid National ID");
-    else res.send(validator.validateAndExtractInfo());
+    if (validator === null) res.send("Invalid country code");
+    else {
+        if (validator.request.isValid && !validator.request.isValid)
+            res.send(validator.request.message);
+        else
+            res.send(validator.validateAndExtractInfo());
+    }
 
     res.end()
 });
