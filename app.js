@@ -11,10 +11,12 @@ app.get('/validate', (req, res) => {
 
     if (validator === null) res.send("Invalid country code");
     else {
-        if (validator.request.isValid && !validator.request.isValid)
-            res.send(validator.request.message);
+        let request = validator.validateAndExtractInfo();
+        console.log(request);
+        if (request.isValid)
+            res.send(request.info);
         else
-            res.send(validator.validateAndExtractInfo());
+            res.send(request.message);
     }
 
     res.end()

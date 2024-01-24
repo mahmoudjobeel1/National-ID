@@ -39,8 +39,8 @@ export class BirthPlaceHandler extends Handler {
         let birth_place = this.goverment_codes[goverment_code];
 
         if(birth_place == null){
-            request.info.isValid = false;
-            request.info.message = "Invalid National ID -> Birth Place is invalid";
+            request.isValid = false;
+            request.message = "Invalid National ID -> Birth Place is invalid";
             return;
         }
 

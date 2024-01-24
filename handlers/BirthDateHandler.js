@@ -9,15 +9,15 @@ export class BirthDateHandler extends Handler {
 
 
         if (birth_month > 12 || birth_month == 0) {
-            request.info.isValid = false;
-            request.info.message = "Invalid National ID -> Birth Month is invalid";
+            request.isValid = false;
+            request.message = "Invalid National ID -> Birth Month is invalid";
             return;
         }
 
         let month_days= new Date(2021, birth_month , 0).getDate();
         if (birth_day > month_days || birth_day === 0) {
-            request.info.isValid = false;
-            request.info.message = "Invalid National ID -> Birth Day is invalid";
+            request.isValid = false;
+            request.message = "Invalid National ID -> Birth Day is invalid";
             return;
         }
 
@@ -25,8 +25,8 @@ export class BirthDateHandler extends Handler {
         let birth_date = new Date((birth_year, birth_month, birth_day));
         let today_date = new Date();
         if (birth_date > today_date) {
-            request.info.isValid = false;
-            request.info.message = "Invalid National ID -> Birth Date is in the future";
+            request.isValid = false;
+            request.message = "Invalid National ID -> Birth Date is in the future";
             return;
         }
 
